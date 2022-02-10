@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Student_DetailsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Stu_Login">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="Createdby" Type="int" Nullable="false" />
+    <Property Name="Createddate" Type="datetime" />
+    <Property Name="Updatedby" Type="int" />
+    <Property Name="Updateddate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Stu_Signup">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Rollno" Type="varchar" MaxLength="50" />
+    <Property Name="Stuname" Type="varchar" MaxLength="50" />
+    <Property Name="Class" Type="varchar" MaxLength="50" />
+    <Property Name="Address" Type="varchar" MaxLength="50" />
+    <Property Name="Gender" Type="varchar" MaxLength="50" />
+    <Property Name="Phoneno" Type="varchar" MaxLength="10" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Fathername" Type="varchar" MaxLength="50" />
+    <Property Name="Admissiondate" Type="datetime" />
+    <Property Name="Passedout" Type="datetime" />
+    <Property Name="Remarks" Type="varchar" MaxLength="50" />
+    <Property Name="Status" Type="bit" />
+    <Property Name="Createdby" Type="int" />
+    <Property Name="Createddate" Type="datetime" />
+    <Property Name="Updatedby" Type="int" />
+    <Property Name="Updateddate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Username" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="Address" Type="varchar" MaxLength="50" />
+    <Property Name="City" Type="varchar" MaxLength="50" />
+    <Property Name="State" Type="varchar" MaxLength="50" />
+    <Property Name="Country" Type="varchar" MaxLength="50" />
+    <Property Name="Postalcode" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Mobilenumber" Type="numeric" Precision="18" Scale="0" />
+    <Property Name="Email" Type="varchar" MaxLength="50" />
+    <Property Name="Createdby" Type="int" />
+    <Property Name="Createddate" Type="datetime" />
+    <Property Name="Updatedby" Type="int" />
+    <Property Name="Updateddate" Type="datetime" />
+  </EntityType>
+  <EntityContainer Name="Student_DetailsModelStoreContainer">
+    <EntitySet Name="Stu_Login" EntityType="Self.Stu_Login" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Stu_Signup" EntityType="Self.Stu_Signup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

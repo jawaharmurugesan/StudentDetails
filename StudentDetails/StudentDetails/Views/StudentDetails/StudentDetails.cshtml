@@ -1,0 +1,174 @@
+﻿@model IEnumerable<StudentDetails.Models.StudentData.StudentData_Prop>
+@{
+    ViewBag.Title = "StudentDetails";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    //var count = 0;
+}
+
+
+
+<br />
+<br />
+<br />
+
+<script>
+    function Addbtn() {
+        window.location.href = "@Url.Action("StudentDetails_Add", "StudentDetails")";
+    }
+
+     function GridEdit(val) {
+        window.location.href = "@Url.Action("StudentDetails_Edit", "StudentDetails")" + "?Id="+val;
+
+    }
+    function GridDelete(val) {
+        if (confirm('Are you sure want to delete?'))
+              {
+           window.location.href = "@Url.Action("Student_Delete", "StudentDetails")" + "?Id="+val;
+        }
+    }
+</script>
+<div class="product-status mg-b-15 margin-top-45">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-0">
+                <div class="product-status-wrap drp-lst">
+                    <h4 class="pull-left">Student List</h4>
+                   
+                    <div>
+                        @if (@Session["UserName"].ToString() == "Admin")
+                        {
+                            <button style="margin-bottom: 8px; margin-top: 6px;" type="button" class="btn btn-default btn-sm pull-right" onclick="Addbtn()"><span class="fa fa-plus"></span> Add Student</button>
+                        }
+
+                    </div>
+                    <div class="asset-inner table-border" style="margin-bottom: -10px">
+                        <table class="table table-responsive">
+                            <thead>
+                                <tr>
+                                    <th>@Html.DisplayNameFor(model => model.Rollno)</th>
+                                    <th>@Html.DisplayNameFor(model => model.Stuname)</th>
+                                    <th>@Html.DisplayNameFor(model => model.Address)</th>
+                                    <th>@Html.DisplayNameFor(model => model.Class)</th>
+                                    <th>@Html.DisplayNameFor(model => model.Gender)</th>
+                                    <th>@Html.DisplayNameFor(model => model.Phoneno)</th>
+                                    <th>@Html.DisplayNameFor(model => model.Email)</th>
+                                    @if (@Session["UserName"].ToString() == "Admin")
+                                    {
+                                        <th>Action</th>
+                                    }
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @if (Model != null && Model.Count() > 0)
+        {
+            foreach (var Item in Model)
+            {
+                                <tr>
+                                    @*<td>@count</td>*@
+                                    <td>@Html.Raw(Item.Rollno)</td>
+                                    <td>@Html.Raw(Item.Stuname)</td>
+                                    <td>@Html.Raw(Item.Address)</td>
+                                    <td>@Html.Raw(Item.Class)</td>
+                                    <td>@Html.Raw(Item.Gender)</td>
+                                    <td>@Html.Raw(Item.Phoneno)</td>
+                                    <td>@Html.Raw(Item.Email)</td>
+                                    @if(@Session["UserName"].ToString() == "Admin"){
+                                    <td>
+                                        <button class="btn" onclick="GridDelete(this.id)" id="@Item.ID"><span class="glyphicon glyphicon-trash"></span></button>
+                                        <button class="btn" onclick="GridEdit(this.id)" id="@Item.ID"><span class="glyphicon glyphicon-pencil"></span></button>
+                                    </td>
+                                    }
+
+                                </tr>
+                                        //count++;
+                                    }
+                                }
+                                @*else
+                                {
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;">No employee found</td>
+                                    </tr>
+                                    showFooter = false;
+                                }*@
+                            </tbody>
+                        </table>
+                       
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .pagination {
+        font-size: 12px;
+        text-align: center
+    }
+
+        .pagination input, .pagination select {
+            width: 30px;
+            padding: 2px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        .pagination select {
+            width: 50px
+        }
+
+    .table1 {
+        margin-bottom: -10px;
+    }
+
+        .table1 table {
+            width: 100%
+        }
+
+            .table1 table thead {
+                border-bottom: 2px solid #eee;
+            }
+
+            .table1 table tr th, .table1 table tr td {
+                font-size: 12px;
+                border: 1px solid #eee;
+                padding-left: 3px;
+                padding: 3px;
+            }
+</style>
+<style>
+    .asset-inner table tr td a {
+        text-decoration: underline;
+        color: #2293b7
+    }
+
+    .current .item-wrap:before, .current .item-wrap:after {
+        background-color: #ddd
+    }
+
+    .multi-step-item .item-title {
+        font-size: 9px;
+        margin-top: -6px;
+    }
+
+    .checked .multi-step-item.completed:after {
+        content: "";
+    }
+
+    .multi-step-list {
+        height: 15px;
+        padding: 2px;
+        padding-top: -10px;
+    }
+
+    .product-status-wrap.drp-lst table td {
+        padding: 0px 8px;
+    }
+
+    .product-status-wrap.drp-lst {
+    }
+</style>

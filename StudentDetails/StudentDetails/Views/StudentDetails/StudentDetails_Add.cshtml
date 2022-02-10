@@ -1,0 +1,151 @@
+﻿@model StudentDetails.Models.StudentData.StudentData_Prop
+    @{ 
+    ViewBag.Title = "StudentDetails_Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<br />
+<br />
+<br />*@
+
+<script>
+    function btnback() {
+        window.location.href = "@Url.Action("StudentDetails", "StudentDetails")";
+        }
+</script>
+<div class="product-status mg-b-15 margin-top-45">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 padding-0">
+                <div class="product-status-wrap drp-lst">
+                    @*<h4 class="pull-left">Buyer Department Add</h4>*@
+                    <div>
+                        <h4 class="page-header text-danger">Student Add Here !</h4>
+                        <button style="margin-bottom: 8px; margin-top: 6px;" type="button" onclick="btnback()" class="btn btn-default btn-sm pull-right"><span class="fa fa-arrow-left "></span> List Student</button>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@using (Html.BeginForm("CreateItem", "StudentDetails", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <div class="row margin-top-22m">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="product-payment-inner-st Entry-body">
+                <div class="">
+                  
+                    <div id="myTabContent" class="tab-content custom-product-edit">
+                        <div class="product-tab-list tab-pane fade active in" id="Tab1">
+                            <div class="row">
+                                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                    <div class="review-content-section">
+                                        <form id="add-department" action="#" class="add-department">
+                                            <div class="row Entry-input-label">
+
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding:25px">
+                                                    <div class="row">
+                                                        <label class="col-lg-4 col-xs-5">Roll No<span class="star"> *</span></label>
+
+                                                        @Html.EditorFor(model => model.Rollno, new { htmlAttributes = new { @class = "col-lg-8 col-xs-7 form-control", @type = "text", @placeholder = "Student Roll No", @Maxlength = "50", } })
+                                                        @Html.ValidationMessageFor(Model => Model.Rollno, "", new { @class = "text-danger" })
+                                                        @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+                                                    </div>
+                                                    <div class="row">
+                                                        <label class="col-lg-4 col-xs-5">Student Name<span class="star"> *</span></label>
+
+                                                        @Html.EditorFor(model => model.Stuname, new { htmlAttributes = new { @class = "col-lg-8 col-xs-7 form-control", @type = "text", @placeholder = "Student Name", @Maxlength = "50", } })
+                                                        @Html.ValidationMessageFor(Model => Model.Stuname, "", new { @class = "text-danger" })
+                                                        @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+                                                    </div>
+                                                    <div class="row">
+                                                        <label class="col-lg-4 col-xs-5">Class<span class="star"> *</span></label>
+
+                                                        @Html.EditorFor(model => model.Class, new { htmlAttributes = new { @class = "col-lg-8 col-xs-7 form-control", @type = "text", @placeholder = "Class", @Maxlength = "50", } })
+                                                        @Html.ValidationMessageFor(Model => Model.Class, "", new { @class = "text-danger" })
+                                                        @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+                                                    </div>
+                                                   
+                                                    <div class="row">
+                                                        <label class="col-lg-4 col-xs-5">Address<span class="star"> *</span></label>
+
+                                                        @Html.EditorFor(model => model.Address, new { htmlAttributes = new { @class = "col-lg-8 col-xs-7 form-control", @type = "text", @placeholder = "Address", @Maxlength = "50", } })
+                                                        @Html.ValidationMessageFor(Model => Model.Address, "", new { @class = "text-danger" })
+                                                        @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+                                                    </div>
+                                                    <div class="row">
+                                                        <label class="col-lg-4 col-xs-5">Gardian Name<span class="star"> *</span></label>
+
+                                                        @Html.EditorFor(model => model.Fathername, new { htmlAttributes = new { @class = "col-lg-8 col-xs-7 form-control", @type = "text", @placeholder = "Gardian Name", @Maxlength = "50", } })
+                                                        @Html.ValidationMessageFor(Model => Model.Fathername, "", new { @class = "text-danger" })
+                                                        @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+                                                    </div>
+                                                  
+                                                </div>
+
+                                                <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12" style="padding:25px">
+                                                    <div class="row">
+                                                        <label class="col-lg-4 col-xs-5">Gender<span class="star"> *</span></label>
+
+                                                        @Html.DropDownListFor(model => model.Gender, new List<SelectListItem>
+                                                              {
+                                                                      new SelectListItem() {Text = "Male", Value="Male"},
+                                                                      new SelectListItem() {Text = "Female", Value="Female"},
+                                                                      }, "Select", new { @class = "col-lg-8 col-xs-7 form-control" })
+
+                                                        @Html.ValidationMessageFor(model => model.Gender, "", new { @class = "text-danger", @readonly="true"})
+                                                    </div>
+                                                    <div class="row">
+                                                        <label class="col-lg-4 col-xs-5">Phone No<span class="star"> *</span></label>
+
+                                                        @Html.EditorFor(model => model.Phoneno, new { htmlAttributes = new { @class = "col-lg-8 col-xs-7 form-control", @type = "tel", @placeholder = "Phone No", @Maxlength = "10", @onkeypress = "return Numbervalidation(event, this);" } })
+                                                        @Html.ValidationMessageFor(Model => Model.Phoneno, "", new { @class = "text-danger" })
+                                                        @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+                                                    </div>
+                                                    <div class="row">
+                                                        <label class="col-lg-4 col-xs-5">Email<span class="star"> *</span></label>
+
+                                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "col-lg-8 col-xs-7 form-control", @type = "email", @placeholder = "Email", @Maxlength = "50", } })
+                                                        @Html.ValidationMessageFor(Model => Model.Email, "", new { @class = "text-danger" })
+                                                        @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+                                                    </div>
+                                                    <div class="row">
+                                                        <label class="col-lg-4 col-xs-5">Admission Date<span class="star"> *</span></label>
+
+                                                        @Html.EditorFor(model => model.Admissiondate, new { htmlAttributes = new { @class = "col-lg-8 col-xs-7 form-control", @type = "date",  @Maxlength = "50", } })
+                                                        @Html.ValidationMessageFor(Model => Model.Admissiondate, "", new { @class = "text-danger" })
+                                                        @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+                                                    </div>
+                                                    <div class="row">
+                                                        <label class="col-lg-4 col-xs-5">Passed Out<span class="star"> *</span></label>
+
+                                                        @Html.EditorFor(model => model.Passedout, new { htmlAttributes = new { @class = "col-lg-8 col-xs-7 form-control", @type = "date", @Maxlength = "50", } })
+                                                        @Html.ValidationMessageFor(Model => Model.Passedout, "", new { @class = "text-danger" })
+                                                        @*@Html.ValidationSummary(true, "", new { @class = "text-danger" })*@
+                                                    </div>
+                                                </div>
+                                                </div>
+                                            <br />
+                                                <div class="row">
+                                                    <div class="col-lg-12" style="text-align: right">
+                                                        <button type="submit" class="btn btn-primary waves-effect waves-light">Submit</button>
+                                                        <button type="button" onclick="btnback()" class="btn btn-default waves-effect waves-light">Cancel</button>
+                                                    </div>
+                                                </div>
+</form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+
